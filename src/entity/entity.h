@@ -1,5 +1,9 @@
 #pragma once
 
+#include <vector>
+
+class Action;
+
 class Entity {
 
 public:
@@ -15,23 +19,32 @@ public:
 
     Entity() = default;
 
-    int getLevel() { return m_level; }
+    int getLevel() const { return m_level; }
 
-    int getMaxHealth() { return m_maxHealth; }
+    int getMaxHealth() const { return m_maxHealth; }
 
-    int getCurrentHealth() { return m_currentHealth; }
+    int getCurrentHealth() const { return m_currentHealth; }
 
-    int getArmor() { return m_armor; }
+    int getArmor() const { return m_armor; }
 
-    int getResistance() { return m_resistance; }
+    int getResistance() const { return m_resistance; }
 
-    int getBlockChance() { return m_blockChance; }
+    int getBlockChance() const { return m_blockChance; }
 
-    int getStrength() { return m_strength; }
+    int getStrength() const { return m_strength; }
 
-    int getIntelligence() { return m_intelligence; }
+    int getIntelligence() const { return m_intelligence; }
 
-    int getGold() { return m_gold; }
+    int getGold() const { return m_gold; }
+
+    const std::vector<Action>& getActions() const { return m_actions; }
+    
+    bool isDead() const { return m_currentHealth <= 0; }
+
+    void takePhysicalDamage(int damage);
+
+    void takeMagicDamage(int damage);
+
 
 protected:
 
@@ -47,4 +60,6 @@ protected:
     int m_intelligence {};
 
     int m_gold {};
+
+    std::vector<Action> m_actions {};
 };
