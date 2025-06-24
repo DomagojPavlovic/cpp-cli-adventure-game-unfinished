@@ -1,19 +1,23 @@
 #include <iostream>
 #include "ui.h"
 #include "game.h"
+#include "randomUtils.h"
 
 int main() {
-
 	Game game {};
 
-	UI ui {};
+	UI ui { game };
 	
 	ui.configureScreenPrompt();
 	
 
+    game.addEnemy(RandomUtils::generateRandomEnemy(1));
+    game.addEnemy(RandomUtils::generateRandomEnemy(1));
+
 	ui.showScreen();
 
 
+    // one encounter
 	while(true) {
         //combat
 
@@ -31,3 +35,4 @@ int main() {
 
 	return 0;
 }
+
