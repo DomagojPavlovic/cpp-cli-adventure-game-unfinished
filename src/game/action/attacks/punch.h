@@ -19,7 +19,11 @@ public:
         
     // 2-4 dmg per level
     void execute(Player& player, std::vector<Enemy>& enemies, int index = 0) override {
-        enemies[index].takePhysicalDamage(Random::get(2, 4) * player.getLevel());
+
+        int dmgCalculation { Random::get(2, 4) * player.getLevel() };
+        int addStrength { player.getStrength() };
+
+        enemies[index].takePhysicalDamage(dmgCalculation + addStrength);
     }
 
 }
