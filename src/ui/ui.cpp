@@ -1,6 +1,7 @@
 #include "ui.h"
 #include "resourcesUI.h"
 #include "locationUI.h"
+#include "enemiesUI.h"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -10,9 +11,10 @@
 #include <stdexcept>
 
 
-UI::UI() {
-	m_combatScreenElements.push_back(std::make_unique<ResourcesUI>());
-	m_combatScreenElements.push_back(std::make_unique<LocationUI>());
+UI::UI(Game& game) {
+	m_combatScreenElements.push_back(std::make_unique<ResourcesUI>(game.getPointerToPlayer()));
+	m_combatScreenElements.push_back(std::make_unique<LocationUI>(game.getPointerToLocation()));
+	m_combatScreenElements.push_back(std::make_unique<EnemiesUI>(game.getPointerToEnemies()));
 }
 
 void UI::showScreen() {
@@ -27,7 +29,6 @@ void UI::showScreen() {
 			
 			if(uiElementLines.contains(i)) {
 
-				
 				const Line& uiElementLine { uiElementLines.at(i) };
 				outputLine.replace(
 					alignmentToPositionOnScreen(uiElementLine.alignment, uiElementLine.uiElementMaxLength), 

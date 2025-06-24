@@ -7,7 +7,7 @@ LocationUI::LocationUI(Location* location)
         UI::s_locationUiAlignment
     },
     m_location { location }
-    {}
+{}
 
 
 std::map<int, Line> LocationUI::getLines() {
