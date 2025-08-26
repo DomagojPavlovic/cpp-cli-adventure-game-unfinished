@@ -1,7 +1,6 @@
 #include <iostream>
 #include "ui.h"
 #include "game.h"
-#include "randomUtils.h"
 
 int main() {
 	Game game {};
@@ -9,10 +8,6 @@ int main() {
 	UI ui { game };
 	
 	ui.configureScreenPrompt();
-	
-
-    game.addEnemy(RandomUtils::generateRandomEnemy(1));
-    game.addEnemy(RandomUtils::generateRandomEnemy(1));
 
 	ui.showScreen();
 

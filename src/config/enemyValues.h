@@ -42,7 +42,7 @@ namespace EnemyValues {
 
     static_assert(std::ssize(values) == maxType * 2);
 
-    int getRandomEnemyValueForLevel(Type type, int level, bool isBigEnemy = false) {
+    inline int getRandomEnemyValueForLevel(Type type, int level, bool isBigEnemy = false) {
         if (type >= maxType || level < 1 || level > maxEnemyLevel) {
             throw std::runtime_error("Erroneous enemy value accessed.");
         }

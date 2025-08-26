@@ -1,8 +1,8 @@
 #pragma once
 
+#include "actions.h"
 #include <vector>
 
-class Action;
 
 class Entity {
 
@@ -17,7 +17,11 @@ public:
         , m_intelligence { intelligence }, m_gold { gold }
     {}
 
-    Entity() = default;
+    Entity(const Entity&) = delete;
+    Entity& operator=(const Entity&) = delete;
+    Entity(Entity&&) = default;
+    Entity& operator=(Entity&&) = default;
+
 
     int getLevel() const { return m_level; }
 
@@ -37,13 +41,13 @@ public:
 
     int getGold() const { return m_gold; }
 
-    const std::vector<Action>& getActions() const { return m_actions; }
+    const Actions& getActions() const { return m_actions; }
     
     bool isDead() const { return m_currentHealth <= 0; }
 
-    void takePhysicalDamage(int damage);
+    virtual void takePhysicalDamage(int damage);
 
-    void takeMagicDamage(int damage);
+    virtual void takeMagicDamage(int damage);
 
 
 protected:
@@ -61,5 +65,5 @@ protected:
 
     int m_gold {};
 
-    std::vector<Action> m_actions {};
+    Actions m_actions {};
 };

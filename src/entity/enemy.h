@@ -14,7 +14,11 @@ public:
         , name { name }
     {}
 
-    Enemy() = default;
+    Enemy(const Enemy&) = delete;
+    Enemy& operator=(const Enemy&) = delete;
+    Enemy(Enemy&&) = default;
+    Enemy& operator=(Enemy&&) = default;
+
 
     const std::string& getName() const { return name; }
 

@@ -19,7 +19,10 @@ Player::Player() :
         m_currentStamina      { s_startingMaxStamina },
         m_luck                { s_startingMaxLuck },
         m_reflect             { s_startingReflect }
-    {}
+    {
+
+        // m_actions.addDefaultActions(PlayerAttacksList::defaultAttack.get());
+    }
 
 bool Player::gainExperience(int experience) {
     m_experience += experience;

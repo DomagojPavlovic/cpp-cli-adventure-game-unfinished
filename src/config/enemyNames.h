@@ -36,7 +36,7 @@ namespace EnemyNames {
         "Chimera"sv
     };
 
-    std::string_view getRandomEnemyName(bool isBigEnemy = false) {
+    inline std::string_view getRandomEnemyName(bool isBigEnemy = false) {
         if (isBigEnemy) {
             return bigEnemyNames[Random::get(0, bigEnemyNames.size() - 1)];
         } else {

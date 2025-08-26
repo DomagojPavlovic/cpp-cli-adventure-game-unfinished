@@ -1,5 +1,6 @@
 #pragma once
 
+#include "randomUtils.h"
 #include "player.h"
 #include "enemy.h"
 #include "location.h"
@@ -9,7 +10,11 @@ class Game {
 
 public:
 
-    Game() = default;
+    Game() :  
+        m_player {},
+        m_enemies {},
+        m_location {} 
+    {}
 
     Player* getPointerToPlayer() { return &m_player; }
 
@@ -17,8 +22,8 @@ public:
 
     Location* getPointerToLocation() { return &m_location; }
 
-    void addEnemy(const Enemy& enemy) {
-        m_enemies.push_back(enemy);
+    void addEnemy(int level, bool isBigEnemy = false) {
+        m_enemies.push_back(RandomUtils::generateRandomEnemy(level, isBigEnemy));
     }
 
     void removeAllEnemies() {

@@ -30,7 +30,7 @@ namespace PlayerLevelConfig {
 
     static_assert(std::ssize(values) == maxTableType);
 
-    int getLevelUpValue(TableType type, int level) {
+    inline int getLevelUpValue(TableType type, int level) {
         if(type >= maxTableType) {
             throw std::runtime_error("Erroneous table type accessed.");
         }

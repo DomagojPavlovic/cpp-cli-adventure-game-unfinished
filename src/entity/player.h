@@ -56,4 +56,5 @@ private:
     int m_luck {};
 
     int m_reflect {};
+
 };
